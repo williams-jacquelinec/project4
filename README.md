@@ -23,11 +23,11 @@ See this [video](https://www.youtube.com/watch?v=NqYY0PJbD3s) for a walk through
 * [TODO] Complete the `test_nw_backtrace` function in test/test_align.py to test for proper backtracing in your `NeedlemanWunsch._backtrace` method.
 
 Note: To check that you have correclty implemented your algorithm the following information is provided
-* test_seq3.fa and test_seq4.fa should have an alignment score of **18** and an alignment of:
+* test_seq3.fa and test_seq4.fa should have an alignment score of **17** and an alignment of:
 
 	MAVHQLIRRP
 	
-	---MQLIRHP
+	M---QLIRHP
 
 ### Automate Testing with [Github Actions](https://docs.github.com/en/actions)
   See blogposts below on helping set up Github actions with pytest:
