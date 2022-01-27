@@ -4,7 +4,7 @@ Needleman Wunsch Algorithm
 
 # Assignment Overview
 The purpose of this assigment is to have you implement the Needleman-Wunsch global pairwise sequence alignment algorithm (dynamic programming).
-See this [video](https://www.youtube.com/watch?v=NqYY0PJbD3s) for a walk through of the algorithm implementation
+See this [video](https://www.youtube.com/watch?v=NqYY0PJbD3s) for a walk through of the algorithm implementation. NOTE: This video misses an important step. In the video the X and Y gap matrices assume only two possible transitions when in reality there are three. The missing possibility is the chance that immediately go from a gap in one sequence to a gap in a second sequence. Please follow Lee's Lecture in terms of this appraoch. Please ask the TAs if you have any questions.
 
 # Assignment Tasks
 ## Coding Assessment
