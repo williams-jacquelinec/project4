@@ -22,8 +22,8 @@ def test_nw_alignment():
 
     assert N_W._back.shape == N_W._back_A.shape
 
-    for i in N_W._back.shape[0]:
-        for j in N_W._back.shape[1]:
+    for i in range(len(N_W._back.shape[0])):
+        for j in range(len(N_W._back.shape[1])):
             assert N_W._align_matrix[i][j] != None
 
 
