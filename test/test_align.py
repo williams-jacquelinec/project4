@@ -59,12 +59,10 @@ def test_nw_backtrace():
                 if i == 0:
                     sequence_score += -11
                 elif i > 0:
-                if sequence_B[i-1] != '-':
-                    sequence_score += -11
-                elif sequence_B[i-1] == '-':
-                    sequence_score += -1
-
-                sequence_score += -1
+                    if sequence_B[i-1] != '-':
+                        sequence_score += -11
+                    elif sequence_B[i-1] == '-':
+                        sequence_score += -1
 
         elif sequence_A[i] == '-':
             if i == 0:
