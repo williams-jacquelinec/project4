@@ -258,7 +258,6 @@ class NeedlemanWunsch:
 
             # gapB matrix
             if pointer == 0:
-                print("max value is in matrix gapB")
                 seqA_align += self._seqA[_row-1]
                 seqB_align += '-'
                 curr_location = self._back_B[_row][_column]
@@ -266,7 +265,6 @@ class NeedlemanWunsch:
                 
             #alignment matrix
             elif pointer == 1:
-                print("max value is in alignment matrix")
                 seqA_align += self._seqA[_row-1]
                 seqB_align += self._seqB[_column-1]
                 curr_location = self._back[_row][_column]
@@ -275,7 +273,6 @@ class NeedlemanWunsch:
 
             # gapA matrix
             elif pointer == 2:
-                print("max value is in matrix gapA")
                 seqA_align += '-'
                 seqB_align += self._seqB[_column-1]
                 curr_location = self._back_A[_row][_column]
@@ -284,7 +281,6 @@ class NeedlemanWunsch:
 
         final_seqA_align = seqA_align[::-1]
         final_seqB_align = seqB_align[::-1]
-
         
         return self.alignment_score, final_seqA_align, final_seqB_align
 
@@ -329,4 +325,3 @@ def read_fasta(fasta_file: str) -> Tuple[str, str]:
             elif is_header and not first_header:
                 break
     return seq, header
-
