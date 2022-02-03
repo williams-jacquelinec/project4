@@ -15,7 +15,7 @@ def test_nw_alignment():
     seq1, _ = read_fasta("./data/test_seq1.fa")
     seq2, _ = read_fasta("./data/test_seq2.fa")
     
-    N_W = NeedlemanWunsch(sub_matrix_file = "BLOSUM62.mat", gap_open = -10, gap_extend = -1)
+    N_W = NeedlemanWunsch(sub_matrix_file = "./substitution_matrices/BLOSUM62.mat", gap_open = -10, gap_extend = -1)
     N_W_align = N_W.align(seqA = seq1, seqB = seq2)
 
     # test alignment accuracy here: check each matrix has same dimensions and there are no null values?
@@ -38,7 +38,7 @@ def test_nw_backtrace():
     seq3, _ = read_fasta("./data/test_seq3.fa")
     seq4, _ = read_fasta("./data/test_seq4.fa")
 
-    N_W = NeedlemanWunsch(sub_matrix_file = "BLOSUM62.mat", gap_open = -10, gap_extend = -1)
+    N_W = NeedlemanWunsch(sub_matrix_file = "./substitution_matrices/BLOSUM62.mat", gap_open = -10, gap_extend = -1)
     N_W_align = N_W.align(seqA = seq3, seqB = seq4)
 
     # test backtracing accuracy here: check that sequence score (manually scoring) = alignment score
