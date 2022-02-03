@@ -14,7 +14,18 @@ def test_nw_alignment():
     """
     seq1, _ = read_fasta("./data/test_seq1.fa")
     seq2, _ = read_fasta("./data/test_seq2.fa")
-    pass
+    
+    N_W = NeedlemanWunsch(sub_matrix_file = "BLOSUM62.mat", gap_open = -10, gap_extend = -1)
+    N_W_align = N_W.align(seqA = seq1, seqB = seq2)
+
+    # test alignment accuracy here: check each matrix has same dimensions and there are no null values?
+
+    assert N_W._back.shape == N_W._back_A.shape
+
+    for i in N_W._back.shape[0]:
+        for j in N_W._back.shape[1]:
+            assert N_W._align_matrix[i][j] != None
+
 
 def test_nw_backtrace():
     """
@@ -26,7 +37,37 @@ def test_nw_backtrace():
     """
     seq3, _ = read_fasta("./data/test_seq3.fa")
     seq4, _ = read_fasta("./data/test_seq4.fa")
-    pass
+
+    N_W = NeedlemanWunsch(sub_matrix_file = "BLOSUM62.mat", gap_open = -10, gap_extend = -1)
+    N_W_align = N_W.align(seqA = seq3, seqB = seq4)
+
+    # test backtracing accuracy here: check that sequence score (manually scoring) = alignment score
+
+    alignment_score = N_W_align[0]
+    sequence_A = N_W_align[1]
+    sequence_B = N_W_align[2]
+
+    sequence_score = 0
+
+    for i in range(len(sequence_A)):
+        if sequence_A[i] != '-':
+            if sequence_B[i] != '-':
+                for key, value in N_W.sub_dict.items():
+                    if key == (sequence_A[i], sequence_B[i]):
+                        sequence_score += value
+            elif sequence_B[i] == '-':
+                sequence_score += -1
+
+        elif sequence_A[i] == '-':
+            if i == 0:
+                sequence_score += -10
+            elif i > 0 :
+                if sequence_A[i-1] != '-':
+                    sequence_score += -10
+                elif sequence_A[i-1] == '-':
+                    sequence_score += -1
+
+    assert alignment_score == sequence_score
 
 
 
